@@ -1,16 +1,13 @@
 package io.github.felipesilva15.marketplace.auth.model;
 
 import io.github.felipesilva15.marketplace.common.model.BaseModel;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
@@ -35,4 +32,7 @@ public class User extends BaseModel {
 
     @Column(length = 11)
     private String document;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Address> addresses;
 }

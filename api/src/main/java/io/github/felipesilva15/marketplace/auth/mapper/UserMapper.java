@@ -8,7 +8,7 @@ import io.github.felipesilva15.marketplace.auth.model.User;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {AddressMapper.class})
 public interface UserMapper {
     User toModel(UserRequest request);
     UserResponse toResponse(User model);

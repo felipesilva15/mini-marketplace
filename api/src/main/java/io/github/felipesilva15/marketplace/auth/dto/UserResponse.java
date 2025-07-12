@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 public class UserResponse {
@@ -14,6 +15,8 @@ public class UserResponse {
     private String email;
 
     private String document;
+
+    private List<AddressResponse> addresses;
 
     @JsonProperty("created_at")
     private LocalDateTime createdAt;
