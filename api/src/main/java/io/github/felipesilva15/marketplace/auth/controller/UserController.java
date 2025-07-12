@@ -26,19 +26,41 @@ public class UserController {
         this.userMapper = userMapper;
     }
 
-    @PostMapping
-    public ResponseEntity<UserResponse> save(@RequestBody UserRequest request){
-         User user = userService.create(userMapper.toModel(request));
-         UserResponse response = userMapper.toResponse(user);
-
-         return ResponseEntity.status(HttpStatus.CREATED).body(response);
-    }
-
     @GetMapping
-    public ResponseEntity<List<UserResponse>> findAll(){
+    public ResponseEntity<List<UserResponse>> getAll(){
         List<User> users = userService.findAll();
         List<UserResponse> response = userMapper.toResponseList(users);
 
         return ResponseEntity.status(HttpStatus.OK).body(response);
+    }
+
+    @GetMapping("{id}")
+    public ResponseEntity<UserResponse> getById(@PathVariable Long id){
+        User user = userService.findById(id);
+        UserResponse response = userMapper.toResponse(user);
+
+        return ResponseEntity.status(HttpStatus.OK).body(response);
+    }
+
+    @PostMapping
+    public ResponseEntity<UserResponse> save(@Valid @RequestBody UserRequest request){
+        User user = userService.create(userMapper.toModel(request));
+        UserResponse response = userMapper.toResponse(user);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    @PutMapping("{id}")
+    public ResponseEntity<UserResponse> update(@PathVariable Long id, @Valid @RequestBody UserRequest request){
+        User user = userService.update(id, userMapper.toModel(request));
+        UserResponse response = userMapper.toResponse(user);
+
+        return ResponseEntity.status(HttpStatus.OK).body(response);
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<UserResponse> delete(@PathVariable Long id){
+        userService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }
