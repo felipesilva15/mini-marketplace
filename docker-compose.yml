@@ -1,0 +1,18 @@
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: backend_user
+      POSTGRES_PASSWORD: backend
+      POSTGRES_DB: mini-marketplace
+    volumes:
+      - ./db_data:/var/lib/postgresql/data
+    ports:
+      - 15432:5432
+
+volumes:
+  db_data:
+
+networks:
+  backend:
+    driver: bridge
