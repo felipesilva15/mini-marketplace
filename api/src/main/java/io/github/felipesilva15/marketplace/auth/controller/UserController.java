@@ -16,7 +16,7 @@ import jakarta.validation.Valid;
 
 
 @RestController
-@RequestMapping("api/user")
+@RequestMapping("/user")
 public class UserController {
     private final UserService userService;
     private final UserMapper userMapper;
@@ -34,7 +34,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<UserResponse> getById(@PathVariable Long id){
         User user = userService.findById(id);
         UserResponse response = userMapper.toResponse(user);
@@ -50,7 +50,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<UserResponse> update(@PathVariable Long id, @Valid @RequestBody UserRequest request){
         User user = userService.update(id, userMapper.toModel(request));
         UserResponse response = userMapper.toResponse(user);
@@ -58,7 +58,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<UserResponse> delete(@PathVariable Long id){
         userService.delete(id);
         return ResponseEntity.noContent().build();

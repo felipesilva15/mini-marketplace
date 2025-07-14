@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/address")
+@RequestMapping("/address")
 public class AddressController {
     private final AddressService addressService;
     private final AddressMapper addressMapper;
@@ -31,7 +31,7 @@ public class AddressController {
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<AddressResponse> getById(@PathVariable Long id){
         Address address = addressService.findById(id);
         AddressResponse response = addressMapper.toResponse(address);
@@ -47,7 +47,7 @@ public class AddressController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<AddressResponse> update(@PathVariable Long id, @Valid @RequestBody AddressRequest request){
         Address address = addressService.update(id, addressMapper.toModel(request));
         AddressResponse response = addressMapper.toResponse(address);
@@ -55,7 +55,7 @@ public class AddressController {
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<AddressResponse> delete(@PathVariable Long id){
         addressService.delete(id);
         return ResponseEntity.noContent().build();
