@@ -1,9 +1,10 @@
 package io.github.felipesilva15.marketplace.auth.repository;
 
+import io.github.felipesilva15.marketplace.auth.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import io.github.felipesilva15.marketplace.auth.model.User;
+import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Long> {
-
+    public Optional<User> findByEmail(String email);
 }
