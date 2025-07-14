@@ -5,8 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Data
 @NoArgsConstructor
@@ -17,5 +18,5 @@ public class ApiErrorDTO {
     private String message;
     private String path;
     private String method;
-    private List<ValidationErrorDTO> errors = Collections.emptyList();
+    private Map<String, List<String>> errors = new HashMap<>();
 }
