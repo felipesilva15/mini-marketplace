@@ -66,4 +66,6 @@ public class ProductRequest {
     private Brand brand;
 
     private Category category;
+
+    private boolean active;
 }

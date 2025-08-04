@@ -54,6 +54,8 @@ public class ProductResponse {
 
     private Category category;
 
+    private boolean active;
+
     @JsonProperty("created_at")
     private LocalDateTime createdAt;
 
