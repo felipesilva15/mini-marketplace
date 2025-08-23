@@ -22,8 +22,8 @@ public class Movement extends BaseModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
-    private Long product_id;
+    @Column(name = "product_id")
+    private Long productId;
 
     @ManyToOne
     @JoinColumn(name = "deposit_id")
