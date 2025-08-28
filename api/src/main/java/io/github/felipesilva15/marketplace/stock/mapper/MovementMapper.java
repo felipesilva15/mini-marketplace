@@ -1,5 +1,6 @@
 package io.github.felipesilva15.marketplace.stock.mapper;
 
+import io.github.felipesilva15.marketplace.stock.dto.MovementDTO;
 import io.github.felipesilva15.marketplace.stock.dto.MovementRequest;
 import io.github.felipesilva15.marketplace.stock.dto.MovementResponse;
 import io.github.felipesilva15.marketplace.stock.model.Movement;
@@ -13,5 +14,7 @@ public interface MovementMapper {
     @Mapping(target = "productId", source = "request.product.id")
     Movement toModel(MovementRequest request);
     MovementResponse toResponse(Movement model);
-    List<MovementResponse> toResponseList(List<Movement> modelList);
+    MovementResponse toResponse(MovementDTO dto);
+    List<MovementResponse> toResponseList(List<MovementDTO> DTOList);
+    MovementDTO toDTO(Movement model);
 }

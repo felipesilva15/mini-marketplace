@@ -1,5 +1,6 @@
 package io.github.felipesilva15.marketplace.stock.controller;
 
+import io.github.felipesilva15.marketplace.stock.dto.MovementDTO;
 import io.github.felipesilva15.marketplace.stock.dto.MovementRequest;
 import io.github.felipesilva15.marketplace.stock.dto.MovementResponse;
 import io.github.felipesilva15.marketplace.stock.mapper.MovementMapper;
@@ -25,32 +26,32 @@ public class MovementController {
 
     @GetMapping
     public ResponseEntity<List<MovementResponse>> findAll() {
-        List<Movement> movements = movementService.findAll();
-        List<MovementResponse> response = movementMapper.toResponseList(movements);
+        List<MovementDTO> movementDTOs = movementService.findAll();
+        List<MovementResponse> response = movementMapper.toResponseList(movementDTOs);
 
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<MovementResponse> findById(@PathVariable Long id) {
-        Movement movement = movementService.findById(id);
-        MovementResponse response = movementMapper.toResponse(movement);
+        MovementDTO movementDTO = movementService.findById(id);
+        MovementResponse response = movementMapper.toResponse(movementDTO);
 
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     @PostMapping
     public ResponseEntity<MovementResponse> save(@Valid @RequestBody MovementRequest request){
-        Movement movement = movementService.create(movementMapper.toModel(request));
-        MovementResponse response = movementMapper.toResponse(movement);
+        MovementDTO movementDTO = movementService.create(movementMapper.toModel(request));
+        MovementResponse response = movementMapper.toResponse(movementDTO);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<MovementResponse> update(@PathVariable Long id, @Valid @RequestBody MovementRequest request){
-        Movement movement = movementService.update(id, movementMapper.toModel(request));
-        MovementResponse response = movementMapper.toResponse(movement);
+        MovementDTO movementDTO = movementService.update(id, movementMapper.toModel(request));
+        MovementResponse response = movementMapper.toResponse(movementDTO);
 
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
