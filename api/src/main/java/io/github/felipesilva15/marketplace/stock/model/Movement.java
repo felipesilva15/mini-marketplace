@@ -33,6 +33,9 @@ public class Movement extends BaseModel {
     private MovementOperation operation;
 
     @Column(precision = 12, scale = 2)
+    private BigDecimal quantity;
+
+    @Column(precision = 12, scale = 2)
     private BigDecimal price;
 
     @Column(precision = 12, scale = 2)

@@ -1,0 +1,1 @@
+ALTER TABLE movements ADD quantity DECIMAL(12, 2) NULL;

@@ -19,6 +19,8 @@ public class MovementResponse {
 
     private MovementOperation operation;
 
+    private BigDecimal quantity;
+
     private BigDecimal price;
 
     private BigDecimal cost;

@@ -19,6 +19,8 @@ public class MovementDTO {
 
     private MovementOperation operation;
 
+    private BigDecimal quantity;
+
     private BigDecimal price;
 
     private BigDecimal cost;
