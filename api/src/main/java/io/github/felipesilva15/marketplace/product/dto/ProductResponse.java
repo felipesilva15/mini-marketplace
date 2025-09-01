@@ -27,6 +27,8 @@ public class ProductResponse {
 
     private BigDecimal price;
 
+    private BigDecimal cost;
+
     @JsonProperty("net_weight")
     private BigDecimal netWeight;
 

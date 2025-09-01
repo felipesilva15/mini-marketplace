@@ -32,6 +32,9 @@ public class ProductRequest {
     @PositiveOrZero
     private BigDecimal price;
 
+    @PositiveOrZero
+    private BigDecimal cost;
+
     @JsonProperty("net_weight")
     @PositiveOrZero
     private BigDecimal netWeight;

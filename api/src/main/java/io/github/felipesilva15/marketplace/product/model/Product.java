@@ -43,6 +43,9 @@ public class Product extends BaseModel {
     @Column(precision = 12, scale = 2)
     private BigDecimal price;
 
+    @Column(precision = 12, scale = 2)
+    private BigDecimal cost;
+
     @Column(name = "net_weight", precision = 10, scale = 3)
     private BigDecimal netWeight;
 

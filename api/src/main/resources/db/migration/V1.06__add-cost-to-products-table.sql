@@ -1,0 +1,1 @@
+ALTER TABLE products ADD cost DECIMAL(12, 2) NULL;
