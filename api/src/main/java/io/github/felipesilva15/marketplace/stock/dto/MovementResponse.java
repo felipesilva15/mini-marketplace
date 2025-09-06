@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class MovementResponse {
     private Long id;
 
-    private Product product;
+    private ProductDTO product;
 
     private Deposit deposit;
 
