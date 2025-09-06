@@ -41,15 +41,21 @@ public class OrderService {
     }
 
     @Transactional
-    public OrderDTO create(Order order) {
+    public OrderDTO create(OrderDTO orderDTO) {
+        orderDTO.totalize();
+        Order order = orderMapper.toModel(orderDTO);
+
         Order newOrder = orderRepository.save(order);
 
         return findById(newOrder.getId());
     }
 
     @Transactional
-    public OrderDTO update(Long id, Order order) {
+    public OrderDTO update(Long id, OrderDTO orderDTO) {
         OrderDTO existingOrder = findById(id);
+
+        orderDTO.totalize();
+        Order order = orderMapper.toModel(orderDTO);
 
         order.setId(existingOrder.getId());
         order.setCreatedAt(existingOrder.getCreatedAt());
