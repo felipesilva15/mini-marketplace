@@ -1,12 +1,12 @@
 package io.github.felipesilva15.marketplace.order.dto;
 
-import io.github.felipesilva15.marketplace.auth.model.User;
 import io.github.felipesilva15.marketplace.order.enumerator.OrderStatus;
 import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 @Data
 public class OrderDTO {
@@ -14,7 +14,7 @@ public class OrderDTO {
 
     private Long userId;
 
-    private User user;
+    private UserDTO user;
 
     private String postalCode;
 
@@ -45,6 +45,8 @@ public class OrderDTO {
     private LocalDateTime createdAt;
 
     private LocalDateTime updatedAt;
+
+    private List<OrderItemDTO> items;
 
     public void calculateTotal() {
         setTotal(getProductsValue().add(getShippingCost()));

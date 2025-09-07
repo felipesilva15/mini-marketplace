@@ -8,6 +8,7 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 @Data
 public class OrderRequest {
@@ -49,4 +50,7 @@ public class OrderRequest {
     @PositiveOrZero
     @JsonProperty("shipping_cost")
     private BigDecimal shippingCost;
+
+    @NotNull
+    private List<OrderItemRequest> items;
 }

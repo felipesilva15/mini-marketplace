@@ -8,6 +8,7 @@ import lombok.Data;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 @Data
 public class OrderResponse {
@@ -51,4 +52,6 @@ public class OrderResponse {
 
     @JsonProperty("updated_at")
     private LocalDateTime updatedAt;
+
+    private List<OrderItemResponse> items;
 }

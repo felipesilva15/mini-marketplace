@@ -40,12 +40,15 @@ public class OrderController {
     }
 
     @PostMapping
-    public ResponseEntity<OrderResponse> save(@Valid @RequestBody OrderRequest request){
+    public ResponseEntity<OrderDTO> save(@Valid @RequestBody OrderRequest request){
         OrderDTO data = orderMapper.toDTO(request);
-        OrderDTO orderDTO = orderService.create(data);
-        OrderResponse response = orderMapper.toResponse(orderDTO);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        return ResponseEntity.status(HttpStatus.CREATED).body(data);
+
+//        OrderDTO orderDTO = orderService.create(data);
+//        OrderResponse response = orderMapper.toResponse(orderDTO);
+//
+//        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @PutMapping("/{id}")
